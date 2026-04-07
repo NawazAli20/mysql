@@ -5,4 +5,6 @@ mysql connection and express framework for back-end development
 npm install 
 
 # how to run 
-nodemon server.js 
+nodemon db.js // for a single file implementation 
+
+nodemon server.js //for modular implementation 
