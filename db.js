@@ -93,7 +93,21 @@ app.post("/delete",(req,res)=>{
     }
 })
 
-
+app.get("/agg",(req,res)=>{
+    let q = "select count(*) as count, max(tot_credit) as maxCredit, Min(tot_credit) as minCredit, avg(tot_credit) as avgCredit from student";
+    con.query(q,(err,result)=>{
+        if(err) throw err; 
+        else{
+            const value={"count":result[0].count,
+                "maxCredit":result[0].maxCredit,
+                "minCredit":result[0].minCredit,
+                "avgCredit":result[0].avgCredit
+            };
+            res.send(value);
+        }
+        
+    })
+});
 
 //start the server
 app.listen(port,(err)=>{
