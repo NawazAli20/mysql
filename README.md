@@ -1,10 +1,10 @@
-# mysql
-mysql connection and express framework for back-end development
+# mysql, express and pug
+mysql connection and express framework for back-end development with pug template engine
 
-# install dependencies 
+# Install dependencies 
 npm install 
 
-# how to run 
+# How to run 
 nodemon db.js // for a single file implementation 
 
 nodemon server.js //for modular implementation 
