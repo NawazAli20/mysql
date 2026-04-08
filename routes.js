@@ -1,27 +1,27 @@
 import con from './connection.js';
-import app from './server.js';
+import express from 'express';
 
-// let app = express();
-// let port = 8080;
 
-// app.use(express.urlencoded({extended:false}));
-// app.use(express.static("public"));
+let router = express.Router();
 
 
 
-app.get("/",(req,res)=>{
+
+router.get("/",(req,res)=>{
 let q = "select * from student";
 con.query(q,(err,results)=>{
     if(err) throw err; 
     //console.log(results);
     //results.forEach((student) => {
      //   console.log(student.ID+"-->"+student.name+"-->"+student.dept_name+"-->"+student.tot_credit);
-    res.send(results);
+    //res.send(results);
+    //res.json(results);
+    res.render("display",{students:results});
     });
 });
 
 //Information for a specific student
-app.get("/student/:id",(req,res)=>{
+router.get("/student/:id",(req,res)=>{
 let id = req.params.id;
 let q = "select * from student where ID=?";
 con.query(q,[id],(err,results)=>{
@@ -34,7 +34,7 @@ con.query(q,[id],(err,results)=>{
 });
 
 //add a new student
-app.post("/add",(req,res)=>{
+router.post("/add",(req,res)=>{
     let name = req.body.name;
     if(name){
         let q = "insert into student (name) values(?)";
@@ -49,7 +49,7 @@ app.post("/add",(req,res)=>{
 })
 
 //update a student 
-app.post("/update",(req,res)=>{
+router.post("/update",(req,res)=>{
     let name = req.body.name;
     let id = req.body.id;
     if(name && id){
@@ -65,7 +65,7 @@ app.post("/update",(req,res)=>{
 })
 
 //delete a student
-app.post("/delete",(req,res)=>{
+router.post("/delete",(req,res)=>{
     let id = req.body.id;
     if(id){
         let q = "delete from student where id=?";
@@ -83,4 +83,4 @@ app.post("/delete",(req,res)=>{
     }
 })
 
-
+export default router;

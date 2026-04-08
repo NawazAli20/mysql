@@ -4,7 +4,7 @@ import mysql from 'mysql';
 let con = mysql.createConnection({
 host:'localhost',
 user:'root',
-database: 'DB1',
+database: 'CIS393SP26',
 password:""
 });
 
