@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,13 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="/update">
-<p><label for="name">Updated name: </label> 
-    <input type="text" name="name" placeholder="Enter updated name"></p>
-<p><label for="id">Student ID: </label>
-    <input type="number" name="id" id="id" placeholder="Enter student ID"></p>
-<input type="submit" value="Submit">
-</form>
+    <h1>Add a new student information</h1>
+    <form action="/update" method="post">
+        <label for="id">ID:</label>
+        <input type="number" name="id" id="id" placeholder="Enter your ID">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <label for="credit">Total Credit:</label>
+        <input type="number" name="tot_credit" id="credit" placeholder="Enter your total credit">
+        <button type="submit">Submit</button>
+    </form>
 </body>
-
 </html>
